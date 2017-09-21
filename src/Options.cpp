@@ -15,6 +15,7 @@ Options::Options()
 {
 	//the default constructor needs all the private attributes
 	//initialized to safe values.
+
 	argC=0;
 	argV=NULL;
 	optstring = "";
@@ -24,12 +25,6 @@ Options::Options()
 
 Options::~Options()
 {
-	//the default constructor needs all the private attributes
-		//initialized to safe values.
-		argC=0;
-		argV=NULL;
-		optstring = "";
-		count = 1;
 }
 
 
@@ -38,7 +33,7 @@ Options::~Options()
 int Options::numopt(void)
 {
 	int number = 0;
-
+	count=1;
 	while(getopt()!=0)
 	{
 		number++;

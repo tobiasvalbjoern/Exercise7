@@ -22,6 +22,7 @@ OptCharacter::OptCharacter(int argc, const char **argv)
 	argC = argc;
 	argV = (char**) argv;
 	optstring = "";
+
 	count = 1;
 }
 
@@ -35,7 +36,6 @@ OptCharacter::OptCharacter(const OptCharacter &rhs)
 	optstring=rhs.optstring;
 	count=rhs.count;
 }
-
 
 
 OptCharacter::~OptCharacter()
