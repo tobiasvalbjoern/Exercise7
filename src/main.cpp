@@ -11,13 +11,18 @@
 #include "OptWord.h"
 using namespace std;
 
-OptCharacter opt;
-OptWord opt2;
+OptCharacter opt_chars;
+OptWord opt_words;
 int main(int argc, char** argv)
 {
-	string validOpt = "abo";
-	string validOpt2 = "log";
-	string validOpt3 = "help";
+	string validChars = "abo";
+
+	//number of valid options.
+	int i = 2;
+	string validWords[i];
+	validWords[0] = "log";
+	validWords[1] = "help";
+
 
 	//create a pointer to an object
 	OptCharacter *obj;
@@ -25,7 +30,7 @@ int main(int argc, char** argv)
 	obj = new OptCharacter(argc, (const char**) argv);
 	//copy the dynamic object to the global object, so we can use the global
 	//object in a greater scope.
-	opt = *obj;
+	opt_chars = *obj;
 
 	//create a pointer to an object
 	OptWord *obj2;
@@ -33,34 +38,30 @@ int main(int argc, char** argv)
 	obj2 = new OptWord(argc, (const char**) argv);
 	//copy the dynamic object to the global object, so we can use the global
 	//object in a greater scope.
-	opt2 = *obj2;
+	opt_words = *obj2;
 
 	//send the information about valid options
-	opt.setOptstring(validOpt);
-	opt2.setOptstring(validOpt2);
+	opt_chars.setOptstring(validChars);
 
-	int args = opt.numopt();
+	int args = opt_chars.numopt();
 
 	if (args != 0)
 	{
 		cout << "Number of valid '-chars' on command line: " << args << endl;
 	}
 
-	args = opt2.numopt();
-
-	if (args != 0)
+	for (int j = 0; j < i; j++)
 	{
-		cout << "Number of valid '--wordoption1' on command line: " << args
-				<< endl;
-	}
+		opt_words.setOptstring(validWords[j]);
+		args = opt_words.numopt();
 
-	opt2.setOptstring(validOpt3);
-	args = opt2.numopt();
-	if (args != 0)
-	{
-		cout << "Number of valid '--wordoption2' on command line: " << args
-				<< endl;
-	}
+		if (args != 0)
+		{
+			cout << "Number of valid '"
+					<< validWords[j] <<"' on command line: " << args
+					<< endl;
+		}
 
+	}
 	return 0;
 }

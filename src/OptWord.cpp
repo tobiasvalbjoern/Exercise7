@@ -55,14 +55,19 @@ int OptWord::getopt(void)
 	for (; count < argC; count++)
 	{
 
-		//if there is a - and two characters, as in "-a"
+		//if there is two '-' and three characters in total, as in "--help"
 		if (argV[count][0] == '-' && argV[count][1] == '-'
 				&& strlen(argV[count]) > 3)
 		{
+			//save the found match from the commandline on a string, without
+			//the --
 			string str(argV[count]+2);
-			//compare the letters.
+
+			//compare the words.
 			//if it does not find anything it will return -1
-			if (size_t x = optstring.find(str) != -1)
+			//if (size_t x = optstring.find(str) != -1)
+
+			if (str==optstring)
 			{
 				count++;
 				cout << "Match found: --"
