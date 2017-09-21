@@ -16,26 +16,24 @@ OptWord opt2;
 int main(int argc, char** argv)
 {
 	string validOpt = "abo";
-	string validOpt2= "log";
-	string validOpt3= "help";
+	string validOpt2 = "log";
+	string validOpt3 = "help";
 
 	//create a pointer to an object
 	OptCharacter *obj;
 	//Allocate memory in the heap and make obj point to it.
-	obj=new OptCharacter(argc,(const char**) argv);
+	obj = new OptCharacter(argc, (const char**) argv);
 	//copy the dynamic object to the global object, so we can use the global
 	//object in a greater scope.
-	opt=*obj;
-
+	opt = *obj;
 
 	//create a pointer to an object
-		OptWord *obj2;
-		//Allocate memory in the heap and make obj point to it.
-		obj2=new OptWord(argc,(const char**) argv);
-		//copy the dynamic object to the global object, so we can use the global
-		//object in a greater scope.
-		opt2=*obj2;
-
+	OptWord *obj2;
+	//Allocate memory in the heap and make obj point to it.
+	obj2 = new OptWord(argc, (const char**) argv);
+	//copy the dynamic object to the global object, so we can use the global
+	//object in a greater scope.
+	opt2 = *obj2;
 
 	//send the information about valid options
 	opt.setOptstring(validOpt);
@@ -43,20 +41,26 @@ int main(int argc, char** argv)
 
 	int args = opt.numopt();
 
-	cout << "Number of valid '-chars' on command line: " << args
-				<< endl;
+	if (args != 0)
+	{
+		cout << "Number of valid '-chars' on command line: " << args << endl;
+	}
 
 	args = opt2.numopt();
 
-	cout << "Number of valid '--wordoption1' on command line: " << args
-					<< endl;
+	if (args != 0)
+	{
+		cout << "Number of valid '--wordoption1' on command line: " << args
+				<< endl;
+	}
 
 	opt2.setOptstring(validOpt3);
 	args = opt2.numopt();
-
+	if (args != 0)
+	{
 		cout << "Number of valid '--wordoption2' on command line: " << args
-						<< endl;
-
+				<< endl;
+	}
 
 	return 0;
 }
