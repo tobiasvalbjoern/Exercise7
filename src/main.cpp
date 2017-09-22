@@ -18,6 +18,7 @@ int main(int argc, char** argv)
 {
 	string validChars = "abo";
 
+	int WordArgs;
 	//number of valid options.
 	int i = 2;
 	string validWords[i];
@@ -64,13 +65,12 @@ int main(int argc, char** argv)
 	{
 		opt_words.setOptstring(validWords[j]);
 		args = opt_words.numopt();
-
-		if (args != 0)
-		{
-			cout << "Number of valid '" << validWords[j]
-					<< "' on command line: " << args << endl;
-		}
-
+		WordArgs += args;
 	}
+	if (args != 0)
+	{
+		cout << "Number of valid '--words' on cmd: " << WordArgs << endl;
+	}
+
 	return 0;
 }
