@@ -21,7 +21,7 @@ public:
 	//copy constructor
 	OptWord(const OptWord &rhs);
 	int getopt(void);
-	void setOptstring(string validopt);
+
 };
 
 #endif /* OPTWORD_H_ */

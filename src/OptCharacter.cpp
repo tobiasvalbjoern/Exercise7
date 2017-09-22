@@ -43,10 +43,6 @@ OptCharacter::~OptCharacter()
 	// TODO Auto-generated destructor stub
 }
 
-void OptCharacter::setOptstring(string validopt)
-{
-	optstring = validopt;
-}
 
 int OptCharacter::getopt(void)
 {

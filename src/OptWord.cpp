@@ -42,11 +42,6 @@ OptWord::OptWord(const OptWord &rhs)
 	count = rhs.count;
 }
 
-void OptWord::setOptstring(string validopt)
-{
-	optstring = validopt;
-}
-
 int OptWord::getopt(void)
 {
 	//move through each argument on the command line until a valid option

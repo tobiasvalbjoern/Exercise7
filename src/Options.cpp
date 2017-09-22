@@ -27,6 +27,10 @@ Options::~Options()
 {
 }
 
+void Options::setOptstring(string validopt)
+{
+	optstring = validopt;
+}
 
 //move through all the arguments on the commandline
 //and save the number of valid options found.

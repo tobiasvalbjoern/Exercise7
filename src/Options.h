@@ -19,14 +19,13 @@ public:
 	//destructor
 	virtual ~Options();
 
-	//This is used to copy the validoptions to our class
-	virtual void setOptstring(string validopt)=0;
-
-	//returns the found valid options
-	virtual int getopt(void)=0;
+	void setOptstring(string validopt);
 
 	//counts the number of valid options
 	int numopt(void);
+
+	//returns the found valid options
+	virtual int getopt(void)=0;
 
 protected:
 	int argC,count;

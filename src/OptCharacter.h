@@ -21,7 +21,7 @@ public:
 	OptCharacter(const OptCharacter &rhs);
 	virtual ~OptCharacter();
 	int getopt(void);
-	void setOptstring(string validopt);
+	//void setOptstring(string validopt);
 };
 
 #endif /* OPTCHARACTER_H_ */

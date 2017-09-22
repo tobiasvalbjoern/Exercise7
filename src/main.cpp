@@ -9,6 +9,7 @@
 #include "Options.h"
 #include "OptCharacter.h"
 #include "OptWord.h"
+//#include <exception>
 using namespace std;
 
 OptCharacter opt_chars;
@@ -23,7 +24,6 @@ int main(int argc, char** argv)
 	validWords[0] = "log";
 	validWords[1] = "help";
 
-
 	//create a pointer to an object
 	OptCharacter *obj;
 	//Allocate memory in the heap and make obj point to it.
@@ -34,8 +34,18 @@ int main(int argc, char** argv)
 
 	//create a pointer to an object
 	OptWord *obj2;
-	//Allocate memory in the heap and make obj point to it.
-	obj2 = new OptWord(argc, (const char**) argv);
+
+	try
+	{
+		//Allocate memory in the heap and make obj point to it.
+		obj2 = new OptWord(argc, (const char**) argv);
+	}
+
+	catch (exception& e)
+	{
+		cout << "Standard exception" << e.what() << endl;
+	}
+
 	//copy the dynamic object to the global object, so we can use the global
 	//object in a greater scope.
 	opt_words = *obj2;
@@ -57,9 +67,8 @@ int main(int argc, char** argv)
 
 		if (args != 0)
 		{
-			cout << "Number of valid '"
-					<< validWords[j] <<"' on command line: " << args
-					<< endl;
+			cout << "Number of valid '" << validWords[j]
+					<< "' on command line: " << args << endl;
 		}
 
 	}
